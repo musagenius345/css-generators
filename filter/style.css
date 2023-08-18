@@ -1,0 +1,83 @@
+:root {
+    /* offset-x (required). 
+    The horizontal offset for the shadow, specified as a <length> value. Negative values place the shadow to the left of the element
+    */
+    --offsetX: 0rem;
+
+    /* offset-y (required) 
+    The vertical offset for the shadow,
+    specified as a <length>value. Negative values place the shadow above the element.
+    */
+    --offsetY: 0rem;
+
+    /*
+    blur-radius (optional)
+    The shadow's blur radius, specified as a <length>. The larger the value, the larger and more blurred the shadow becomes. If unspecified, it defaults to 0, resulting in a sharp, unblurred edge. Negative values are not allowed
+    */
+    --blurRadius: 0rem;
+
+    /* 
+    color (optional)
+    The color of the shadow, specified as a <color>. If unspecified, the value of the color property is used. 
+    */
+    --color: black;
+    
+    
+    /* The hue-rotate() function applies a color rotation to the elements on which it is applied. */
+    --hueRotate: 0deg;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+  }
+
+  .container {
+    max-width: 100%;
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+  }
+
+  .box{
+    width: 20rem;
+    height: 20rem;
+    background-color: hsla(64, 93%, 57%, 1);    
+    border: 10px solid slategray;
+    filter: drop-shadow(var(--offsetX) var(--offsetY) var(--blurRadius) var(--color)) hue-rotate(var(--hueRotate));
+    /*filter: drop-shadow(0 25px 25px red);*/
+  }
+
+  code {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: .8rem;
+    transition: 100ms all ease-in;
+    padding-block: 1rem;
+    padding-inline: .621rem;
+    border: 2px solid #ccc;
+  }
+  
+
+  .clipboard {
+    background-color: #BDC2E7;
+    font-size: 1.24rem;
+    border-radius: 0.325rem;
+    border: 1px solid  hsla(233, 12%, 88%, 1);
+  }
+  .copy{
+    overflow-x: scroll;
+    text-wrap: nowrap;
+    text-wrap: none;
+  }
+  .slider{
+    display: flex;
+    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
