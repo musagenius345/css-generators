@@ -1,6 +1,6 @@
 @import url('../pico.min.css');
 
-
+@property
 :root {
   /* offset-x (required). 
     The horizontal offset for the shadow, specified as a <length> value. Negative values place the shadow to the left of the element
@@ -51,6 +51,7 @@ body {
   margin-block: 1.4rem;
   border: 10px solid slategray;
   filter: drop-shadow(var(--offsetX) var(--offsetY) var(--blurRadius) var(--color)) hue-rotate(var(--hueRotate));
+  
 }
 
 code {
