@@ -28,6 +28,11 @@ function setupEventListener(element, event, customProp, units) {
 }
 
 // Define a function to retrieve computed custom property values
+/**
+ * Returns the computed CSS property.
+ * @function
+ * @param {string} customProp - custom property name
+ */
 function getComputedCssProperty(customProp) {
   return getComputedStyle(root).getPropertyValue(`--${customProp}`);
 }
