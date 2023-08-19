@@ -16,7 +16,6 @@ export function updateCssProperty(element, customProp, value, units) {
 
 
 
-
 /**
  * Sets up an event listener to update CSS property values.
  * @function

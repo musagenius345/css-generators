@@ -44,6 +44,11 @@ body {
   place-items: center;
 }
 
+.container{
+  margin: 0;
+  max-width: 100%;
+}
+
 .box {
   width: 20rem;
   aspect-ratio: 1/1;
@@ -83,7 +88,8 @@ code {
 
 .slider {
   display: flex;
-  align-items: stretch;
-  flex-direction: column;
+  max-width: 100%;
+  width: 70vw;
+  margin: 2rem 0.6rem;
   flex-direction: column;
 }

@@ -19,31 +19,92 @@
       </div>
     </code>
     <div class="slider">
-      <div>
-        <label for="offset-x">offset-x</label>
-        <input type="range" name="offset-x" id="offset-x" step="0.001" min="-12" max="12" value="0" />
-      </div>
+      <div class="drop-shadow__container">
+        <div>
+          <label for="offset-x">offset-x</label>
+          <input type="range" name="offset-x" id="offset-x" step="0.001" min="-12" max="12" value="0" />
+        </div>
 
-      <div>
-        <label for="offset-y">offset-y</label>
-        <input type="range" name="offset-y" id="offset-y" step="0.001" min="-12" max="12" value="0" />
+        <div>
+          <label for="offset-y">offset-y</label>
+          <input type="range" name="offset-y" id="offset-y" step="0.001" min="-12" max="12" value="0" />
+        </div>
+        <div>
+          <label for="blur-radius">blur-radius</label>
+          <input type="range" name="blur-radius" id="blur-radius" step="0.01" min="0" max="2.5" value="0" />
+        </div>
+        
+        <div>
+          <label for="color">color</label>
+          <input type="color" name="color" id="color" value="#000000" />
+        </div>
       </div>
+    
+      
+      <!-- BLUR -->
       <div>
-        <label for="blur-radius">blur-radius</label>
-        <input type="range" name="blur-radius" id="blur-radius" step="0.01" min="0" max="2.5" value="0" />
-      </div>
-
-      <div>
-        <label for="color">color</label>
-        <input type="color" name="color" id="color" value="#000000" />
-      </div>
-
-      <div>
-        <label for="hue-rotate">hue-rotate</label>
-        <input type="range" name="hue-rotate" min="-360" max="360" step="1" id="hue-rotate" value="0" />
-      </div>
-
+      <label for="blur">blur</label>
+      <input type="range" name="blur" id="blur" step="0.01" min="0" max="2.5" value="0" />
     </div>
+    <!-- Hue rotate -->
+    <div>
+      <label for="hue-rotate">hue-rotate</label>
+      <input type="range" name="hue-rotate" min="-360" max="360" step="1" id="hue-rotate" value="0" />
+    </div>
+
+    <!-- Saturate -->
+    
+    <div>
+      <label for="saturate">saturate</label>
+      <input type="range" name="saturate" min="-360" max="360" step="1" id="saturate" value="0" />
+    </div>
+    
+    <!-- GRAYSCALE -->
+    <div>
+      <label for="greyscale">greyscale</label>
+      <input type="range" name="greyscale" min="-360" max="360" step="1" id="greyscale" value="0" />
+    </div>
+    
+    <!-- SEPIA -->
+    <div>
+      <label for="sepia">sepia</label>
+      <input type="range" name="sepia" min="-360" max="360" step="1" id="sepia" value="0" />
+    </div>
+    
+    
+    <!-- CONTRAST -->
+    <div>
+      <label for="contrast">contrast</label>
+      <input type="range" name="contrast" min="-360" max="360" step="1" id="contrast" value="0" />
+    </div>
+    
+    
+    <!-- INVERT -->
+    <div>
+      <label for="invert">invert</label>
+      <input type="range" name="invert" min="-360" max="360" step="1" id="invert" value="0" />
+    </div>
+    
+    
+    <!-- OPACITY -->
+    <div>
+      <label for="opacity">opacity</label>
+      <input type="range" name="opacity" min="-360" max="360" step="1" id="sepia" value="0" />
+    </div>
+    <!-- BRIGHTNESS -->
+    <div>
+      <label for="brightness">brightness</label>
+      <input type="range" name="brightness" min="-360" max="360" step="1" id="brightness" value="0" />
+    </div>
+    <!-- SEPIA -->
+    <div>
+      <label for="sepia">sepia</label>
+      <input type="range" name="sepia" min="-360" max="360" step="1" id="sepia" value="0" />
+    </div>
+    
+    
+    
+    
   </div>
 </body>
 <script src="../clipboard.min.js"></script>
