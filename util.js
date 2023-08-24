@@ -1,4 +1,7 @@
- import {updateFilterValues} from './filter/script.js'
+ //import {updateFilterValues} from './filter/script.js'
+const root = document.documentElement;
+ 
+ 
  /**
  * Updates a CSS property value.
  * @function
@@ -7,10 +10,7 @@
  * @param {string} value - The new value for the property.
  * @param {string} units - The units for the value.
  */
-const root = document.documentElement;
- 
- 
-export function updateCssProperty(element, customProp, value, units) {
+export function updateCssProperty( customProp, value, units='') {
   root.style.setProperty(`--${customProp}`, `${value}${units}`);
 }
 
@@ -40,4 +40,27 @@ export function setupEventListener(element, event, customProp, units) {
  */
 export function getComputedCssProperty(customProp) {
   return getComputedStyle(root).getPropertyValue(`--${customProp}`);
+}
+
+
+/**
+ * Get Random integer including lower and upper bounds
+ * @param {number} min - minimum number included
+ * @param {number} max - maximum number included
+ * @returns {number}
+ * */
+export function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+}
+
+/**
+ * Getting a random number between two values
+ * @param {number} min - minimum number maybe included
+ * @param {number} max - maximum number excluded
+ * @returns {number}
+ * */
+export function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
 }
