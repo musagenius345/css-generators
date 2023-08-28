@@ -16,63 +16,58 @@ function convertAndLogColor(color, colorSpace, label) {
   console.log(`${label}: ${convertedColor}`);
 }
 
-// Listen for changes in the color space selection
-select.addEventListener('change', (e) => {
-  const currentColorSpace = e.target.value;
+/**
+ * Calculate and update the contrast values
+ */
+function updateContrastValues() {
+  const currentColorSpace = select.value;
   const backgroundColorValue = backgroundColor.value;
   const textColorValue = textColor.value;
 
+  const convertedBgColor = new Color(backgroundColorValue).to(currentColorSpace);
+  const convertedTextColor = new Color(textColorValue).to(currentColorSpace);
+
   convertAndLogColor(backgroundColorValue, currentColorSpace, 'background-color');
   convertAndLogColor(textColorValue, currentColorSpace, 'text-color');
-});
+  contrastValues(convertedBgColor, convertedTextColor);
+}
+
+// Listen for changes in the color space selection
+select.addEventListener('change', updateContrastValues);
 
 // Listen for changes in the background color input
-backgroundColor.addEventListener('input', (e) => {
-  const currentColorSpace = select.value;
-  const backgroundColorValue = e.target.value;
-  root.style.setProperty('--bg-clr', `${backgroundColorValue}`)
-
-  convertAndLogColor(backgroundColorValue, currentColorSpace, 'background-color');
+backgroundColor.addEventListener('input', () => {
+  root.style.setProperty('--bg-clr', `${backgroundColor.value}`);
+  updateContrastValues();
 });
 
 // Listen for changes in the text color input
-textColor.addEventListener('input', (e) => {
-  const currentColorSpace = select.value;
-  const textColorValue = e.target.value;
-  root.style.setProperty('--txt-clr', `${textColorValue}`)
-  
-
-  convertAndLogColor(textColorValue, currentColorSpace, 'text-color');
+textColor.addEventListener('input', () => {
+  root.style.setProperty('--txt-clr', `${textColor.value}`);
+  updateContrastValues();
 });
 
 // Initial conversion and logging when the page loads
-const initialColorSpace = select.value
-
-const initialBackgroundColor = new Color(backgroundColor.value).to(initialColorSpace)
-
-const initialTextColor = new Color(textColor.value).to(initialColorSpace)
-
-//contrastValue(initialBackgroundColor, initialTextColor, 'APCA')
+const initialColorSpace = select.value;
+const initialBackgroundColor = new Color(backgroundColor.value).to(initialColorSpace);
+const initialTextColor = new Color(textColor.value).to(initialColorSpace);
 
 convertAndLogColor(initialBackgroundColor, initialColorSpace, 'background-color');
 convertAndLogColor(initialTextColor, initialColorSpace, 'text-color');
+contrastValues(initialBackgroundColor, initialTextColor);
 
 /**
  * Calculate the contrast ratio
- * @param {string} backgroundColor
- * @param {string} textColor
+ * @param {Color} backgroundColor
+ * @param {Color} textColor
  * @param {string} ratio
- * */
+ */
 function contrastValues(backgroundColor, textColor){
-  const wcag21  =document.querySelector('.WCAG21')
-  const apca  =document.querySelector('.APCA')
-  const weber  =document.querySelector('.Weber')
-  const michelson  =document.querySelector('.Michelson')
-  const ratioArray = [apca, wcag21, weber, michelson]
-  ratioArray.forEach( ratio => {
-    //console.log(ratio)
-    ratio.textContent = backgroundColor.contrast(textColor, ratio.getAttribute('data-algoContrast'))
-    //console.log(ratio.getAttribute('data-algoContrast'));
-  })
+  const ratioArray = ['APCA', 'WCAG21', 'Weber', 'Michelson'];
+
+  ratioArray.forEach(ratio => {
+    const ratioElement = document.querySelector(`.${ratio}`);
+    const algo = ratioElement.getAttribute('data-algoContrast');
+    ratioElement.textContent = backgroundColor.contrast(textColor, algo).toFixed(3)
+  });
 }
-contrastValues(initialBackgroundColor, initialTextColor)
