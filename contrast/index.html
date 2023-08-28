@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../pico.min.css">
+
+  <title>Contrast Checker</title>
+
+  <style>
+    .center {
+      margin-block: 10vh;
+    }
+  </style>
+</head>
+<div class="container">
+  <form action="" class="grid center">
+    <select name="color-space" id="color-space">
+      <option value="SRGB">SRGB</option>
+      <option value="HSL">HSL</option>
+      <option value="HSV">HSV</option>
+      <option value="HWB">HWB</option>
+      <option value="LAB">LAB</option>
+      <option value="OKLAB">OKLAB</option>
+      <option value="LCH">LCH</option>
+      <option value="OKLCH">OKLCH</option>
+    </select>
+    <label for="background-color">Background Color:
+      <input type="color" name="background-color" value="#000000" id="background-color">
+    </label>
+    <label for="text-color">Text Color:
+      <input type="color" name="text-color" value="#ffffff" id="text-color">
+    </label>
+    
+    <output>
+      <ul>
+        <li>APCA: <span class="APCAcontrast"></span></li>
+        <li>WCAG21:<span class="WCAG21contrast"></span></li>
+        <li>Weber: <span class="Webercontrast"></span></li>
+        <li>Michelson<span class="Michelsoncontrast"></span></li>
+      </ul>
+    </output>
+  </form>
+</div>
+
+<body>
+  <script type="module">
+    import './main.js'
+  </script>
+</body>
+
+</html>
