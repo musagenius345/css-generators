@@ -1,5 +1,6 @@
 import Color from '../node_modules/colorjs.io/dist/color.js';
-
+const root = document.documentElement;
+ 
 const backgroundColor = document.getElementById('background-color');
 const textColor = document.getElementById('text-color');
 const select = document.querySelector('select');
@@ -29,6 +30,7 @@ select.addEventListener('change', (e) => {
 backgroundColor.addEventListener('input', (e) => {
   const currentColorSpace = select.value;
   const backgroundColorValue = e.target.value;
+  root.style.setProperty('--bg-clr', `${backgroundColorValue}`)
 
   convertAndLogColor(backgroundColorValue, currentColorSpace, 'background-color');
 });
@@ -37,14 +39,40 @@ backgroundColor.addEventListener('input', (e) => {
 textColor.addEventListener('input', (e) => {
   const currentColorSpace = select.value;
   const textColorValue = e.target.value;
+  root.style.setProperty('--txt-clr', `${textColorValue}`)
+  
 
   convertAndLogColor(textColorValue, currentColorSpace, 'text-color');
 });
 
 // Initial conversion and logging when the page loads
-const initialColorSpace = select.value;
-const initialBackgroundColor = backgroundColor.value;
-const initialTextColor = textColor.value;
+const initialColorSpace = select.value
+
+const initialBackgroundColor = new Color(backgroundColor.value).to(initialColorSpace)
+
+const initialTextColor = new Color(textColor.value).to(initialColorSpace)
+
+//contrastValue(initialBackgroundColor, initialTextColor, 'APCA')
 
 convertAndLogColor(initialBackgroundColor, initialColorSpace, 'background-color');
 convertAndLogColor(initialTextColor, initialColorSpace, 'text-color');
+
+/**
+ * Calculate the contrast ratio
+ * @param {string} backgroundColor
+ * @param {string} textColor
+ * @param {string} ratio
+ * */
+function contrastValues(backgroundColor, textColor){
+  const wcag21  =document.querySelector('.WCAG21')
+  const apca  =document.querySelector('.APCA')
+  const weber  =document.querySelector('.Weber')
+  const michelson  =document.querySelector('.Michelson')
+  const ratioArray = [apca, wcag21, weber, michelson]
+  ratioArray.forEach( ratio => {
+    //console.log(ratio)
+    ratio.textContent = backgroundColor.contrast(textColor, ratio.getAttribute('data-algoContrast'))
+    //console.log(ratio.getAttribute('data-algoContrast'));
+  })
+}
+contrastValues(initialBackgroundColor, initialTextColor)

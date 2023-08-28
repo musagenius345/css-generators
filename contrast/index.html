@@ -9,8 +9,25 @@
   <title>Contrast Checker</title>
 
   <style>
+    :root {
+      --txt-clr: rgb(0% 0% 0%);
+      --bg-clr: rgb(100% 100% 100%);
+    }
+
+    body {
+      background-color: var(--bg-clr);
+      color: var(--txt-clr);
+    }
+
+    *:not(input) {
+      color: var(--txt-clr);
+    }
+
     .center {
-      margin-block: 10vh;
+      padding-block: 10vh;
+    }
+    [data-algoContrast]{
+      margin-inline-start: 2rem;
     }
   </style>
 </head>
@@ -27,18 +44,18 @@
       <option value="OKLCH">OKLCH</option>
     </select>
     <label for="background-color">Background Color:
-      <input type="color" name="background-color" value="#000000" id="background-color">
+      <input type="color" name="background-color" value="#ffffff" id="background-color">
     </label>
     <label for="text-color">Text Color:
-      <input type="color" name="text-color" value="#ffffff" id="text-color">
+      <input type="color" name="text-color" value="#000000" id="text-color">
     </label>
-    
+
     <output>
       <ul>
-        <li>APCA: <span class="APCAcontrast"></span></li>
-        <li>WCAG21:<span class="WCAG21contrast"></span></li>
-        <li>Weber: <span class="Webercontrast"></span></li>
-        <li>Michelson<span class="Michelsoncontrast"></span></li>
+        <li>APCA:<span class="APCA" data-algoContrast="APCA"></span></li>
+        <li>WCAG21:<span class="WCAG21" data-algoContrast="WCAG21"></span></li>
+        <li>Weber:<span class="Weber" data-algoContrast="Weber"></span></li>
+        <li>Michelson:<span class="Michelson" data-algoContrast="Michelson"></span></li>
       </ul>
     </output>
   </form>
