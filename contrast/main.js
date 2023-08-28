@@ -11,7 +11,7 @@ const select = document.querySelector('select');
  * @param {string} colorSpace - The selected color space (e.g., "SRGB", "HSL", etc.).
  * @param {string} label - The label for the color value (e.g., "background-color", "text-color").
  */
-function convertAndLogColor(color, colorSpace, label) {
+function convertColor(color, colorSpace, label) {
   const convertedColor = new Color(color).to(colorSpace).toString();
   console.log(`${label}: ${convertedColor}`);
 }
@@ -27,8 +27,8 @@ function updateContrastValues() {
   const convertedBgColor = new Color(backgroundColorValue).to(currentColorSpace);
   const convertedTextColor = new Color(textColorValue).to(currentColorSpace);
 
-  convertAndLogColor(backgroundColorValue, currentColorSpace, 'background-color');
-  convertAndLogColor(textColorValue, currentColorSpace, 'text-color');
+  convertColor(backgroundColorValue, currentColorSpace, 'background-color');
+  convertColor(textColorValue, currentColorSpace, 'text-color');
   contrastValues(convertedBgColor, convertedTextColor);
 }
 
@@ -52,8 +52,8 @@ const initialColorSpace = select.value;
 const initialBackgroundColor = new Color(backgroundColor.value).to(initialColorSpace);
 const initialTextColor = new Color(textColor.value).to(initialColorSpace);
 
-convertAndLogColor(initialBackgroundColor, initialColorSpace, 'background-color');
-convertAndLogColor(initialTextColor, initialColorSpace, 'text-color');
+convertColor(initialBackgroundColor, initialColorSpace, 'background-color');
+convertColor(initialTextColor, initialColorSpace, 'text-color');
 contrastValues(initialBackgroundColor, initialTextColor);
 
 /**
@@ -68,6 +68,7 @@ function contrastValues(backgroundColor, textColor){
   ratioArray.forEach(ratio => {
     const ratioElement = document.querySelector(`.${ratio}`);
     const algo = ratioElement.getAttribute('data-algoContrast');
-    ratioElement.textContent = backgroundColor.contrast(textColor, algo).toFixed(3)
+    let contrastValue = backgroundColor.contrast(textColor, algo).toFixed(algo === 'Michelson' ? 4 : 0);
+    ratioElement.textContent = contrastValue;
   });
 }
