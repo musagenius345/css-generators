@@ -1,5 +1,5 @@
-import {setupEventListener, getComputedCssProperty, updateCssProperty} from '../util.js'
-
+import { setupEventListener, getComputedCssProperty, updateCssProperty } from '../util.js'
+let hello = 'Debugging'
 /**
  * Initialize ClipboardJS for clipboard functionality.
  */
@@ -72,6 +72,7 @@ colorPicker.addEventListener('change', (e) => {
  * @function
  */
 export function updateFilterValues() {
+  console.log(hello);
   const currentOffsetXValue = getComputedCssProperty('offsetX');
   const currentOffsetYValue = getComputedCssProperty('offsetY');
   const currentBlurRadiusValue = getComputedCssProperty('blurRadius');
@@ -79,7 +80,7 @@ export function updateFilterValues() {
 
   values.textContent = `filter: drop-shadow(${currentOffsetXValue} ${currentOffsetYValue} ${currentBlurRadiusValue} ${colorPickerValue}) hue-rotate(${currentHueRotateValue});`;
 }
-
+console.log(hello);
 // Initialize the values and update the display
 updateCssProperty(root, 'offsetX', '0', 'rem');
 updateCssProperty(root, 'offsetY', '0', 'rem');
@@ -87,3 +88,4 @@ updateCssProperty(root, 'blurRadius', '0', 'rem');
 updateCssProperty(root, 'hueRotate', '-90', 'deg');
 updateCssProperty(root, 'color', '#000000', '');
 updateFilterValues();
+console.log(hello);

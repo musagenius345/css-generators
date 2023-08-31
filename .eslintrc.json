@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "rules": {
+    "eqeqeq": "warn",
+    "strict": "off",
+    "camelcase": "warn",
+    "no-extra-semi": "warn",
+    "no-useless-rename": "warn",
+    "prefer-const": "warn",
+    "prefer-rest-params": "warn",
+    "prefer-destructuring": "warn",
+    "prefer-template": "warn",
+    "multiline-ternary": "warn",
+    "newline-per-chained-call": "warn",
+    "no-extra-parens": "warn",
+    "semi": "warn"
+  },
+  "ignorePatterns": ["js/**/*.test.js"]
+}

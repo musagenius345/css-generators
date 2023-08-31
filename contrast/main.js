@@ -68,7 +68,13 @@ function contrastValues(backgroundColor, textColor){
   ratioArray.forEach(ratio => {
     const ratioElement = document.querySelector(`.${ratio}`);
     const algo = ratioElement.getAttribute('data-algoContrast');
-    let contrastValue = backgroundColor.contrast(textColor, algo).toFixed(algo === 'Michelson' ? 4 : 0);
+    let contrastValue = backgroundColor.contrast(textColor, algo).toFixed(algo === 'Michelson' ? 4 : 2);
     ratioElement.textContent = contrastValue;
   });
 }
+
+
+const colortxt = new Color('#000000').to('hsv').toString()
+const colorbg = new Color('#FFD859').to('hsv').toString()
+console.log(`color-text: ${colortxt}`);
+console.log(`color-bg: ${colorbg}`);

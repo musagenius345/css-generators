@@ -1,5 +1,5 @@
-//import Color from "../node_modules/colorjs.io/dist/color.js";
-import Color from 'colorjs.io'
+import Color from "../node_modules/colorjs.io/dist/color.js";
+//import Color from 'colorjs.io'
 import {
   getRandomIntInclusive,
   getRandomArbitrary,
