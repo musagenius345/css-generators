@@ -1,7 +1,5 @@
-// TODO Something broke I suspect util.js file
+import { setupEventListener, updateCssProperty, getComputedCssProperty, updateFilterValues } from './utilOG.js';
 
-import { setupEventListener, getComputedCssProperty, updateCssProperty } from '../util.js'
-let hello = 'Debugging'
 /**
  * Initialize ClipboardJS for clipboard functionality.
  */
@@ -49,15 +47,11 @@ const hueRotate = document.getElementById('hue-rotate');
  */
 const values = document.querySelector('.copy');
 
-
-
-
 /**
  * The current value of the color picker.
  * @type {string}
  */
 let colorPickerValue = '#000000';
-
 
 // Set up event listeners for various input elements
 setupEventListener(offsetX, 'input', 'offsetX', 'rem');
@@ -67,30 +61,15 @@ setupEventListener(hueRotate, 'input', 'hueRotate', 'deg');
 
 // Set up event listener for color picker
 colorPicker.addEventListener('change', (e) => {
-  updateCssProperty(root, 'color', e.target.value, '');
+  updateCssProperty('color', e.target.value, '');
   colorPickerValue = e.target.value;
   updateFilterValues();
 });
 
-/**
- * Updates the displayed CSS values.
- * @function
- */
-export function updateFilterValues() {
-  console.log(hello);
-  const currentOffsetXValue = getComputedCssProperty('offsetX');
-  const currentOffsetYValue = getComputedCssProperty('offsetY');
-  const currentBlurRadiusValue = getComputedCssProperty('blurRadius');
-  const currentHueRotateValue = getComputedCssProperty('hueRotate');
-
-  values.textContent = `filter: drop-shadow(${currentOffsetXValue} ${currentOffsetYValue} ${currentBlurRadiusValue} ${colorPickerValue}) hue-rotate(${currentHueRotateValue});`;
-}
-console.log(hello);
 // Initialize the values and update the display
-updateCssProperty(root, 'offsetX', '0', 'rem');
-updateCssProperty(root, 'offsetY', '0', 'rem');
-updateCssProperty(root, 'blurRadius', '0', 'rem');
-updateCssProperty(root, 'hueRotate', '-90', 'deg');
-updateCssProperty(root, 'color', '#000000', '');
+updateCssProperty('offsetX', '0', 'rem');
+updateCssProperty('offsetY', '0', 'rem');
+updateCssProperty('blurRadius', '0', 'rem');
+updateCssProperty('hueRotate', '-90', 'deg');
+updateCssProperty('color', '#000000', '');
 updateFilterValues();
-console.log(hello);
